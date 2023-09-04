@@ -6,6 +6,7 @@ function App() {
   const [result, setResult] = useState(0);
   const [isCalculated, setIsCalculated] = useState(false);
   const [isAlert, setIsAlert] = useState(false);
+  let deleteInterval = null;
 
   function handleClick(e) {
     const char = e.target.innerText === "X" ? "*" : e.target.innerText;
@@ -46,8 +47,9 @@ function App() {
     setArithmetic("");
   }
   function backspace() {
-    arithmetic.length > 0 && setArithmetic((prev) => prev.slice(0, -1));
+    arithmetic.length > 0 && setArithmetic((prev) => prev.slice(0, -1)), 100;
   }
+
   function checkParentheses(string) {
     let amountL = 0;
     let amountR = 0;
@@ -58,25 +60,28 @@ function App() {
     return amountL === amountR;
   }
   function findResult() {
-    let prepareTask = arithmetic.replace(/(\d)\(/g, "$1*(");
-    prepareTask = prepareTask.replace(/[*-+\/]$|[*-+\/]\($|[*-+\/]\)$/, "");
-    // console.log(prepareTask);
-    setArithmetic(prepareTask);
-    const isParentheses = checkParentheses(prepareTask);
-    if (!isParentheses) {
-      setIsAlert(true);
-      alert("Please close all parenthesis before calculating!");
+    if (arithmetic === "") {
+      setResult(0);
+    } else if (arithmetic.length > 16) {
+      setResult("too many digits");
     } else {
-      const findSolution = eval(prepareTask);
-      if (isNaN(findSolution) || !isFinite(findSolution)) {
-        setResult("Error");
+      let prepareTask = arithmetic.replace(/(\d)\(/g, "$1*(");
+      prepareTask = prepareTask.replace(/[*-+\/]$|[*-+\/]\($|[*-+\/]\)$/, "");
+      // console.log(prepareTask);
+      setArithmetic(prepareTask);
+      const isParentheses = checkParentheses(prepareTask);
+      if (!isParentheses) {
+        setIsAlert(true);
+        alert("Please close all parenthesis before calculating!");
       } else {
-        setIsCalculated(true);
-        setResult(
-          arithmetic === ""
-            ? 0
-            : Math.round(findSolution * 100000000) / 100000000
-        );
+        const findSolution = eval(prepareTask);
+        if (isNaN(findSolution) || !isFinite(findSolution)) {
+          setResult("Error");
+        } else {
+          setIsCalculated(true);
+          console.log(arithmetic);
+          setResult(Math.round(findSolution * 100000000) / 100000000);
+        }
       }
     }
   }
@@ -94,6 +99,7 @@ function App() {
         <div onClick={backspace} className="delete">
           <LuDelete />
         </div>
+
         <div onClick={handleClick} className="parentheses-left">
           {"("}
         </div>

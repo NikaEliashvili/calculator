@@ -58,7 +58,7 @@ body {
   grid-area: head;
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: space-between;
   align-items: end;
   border-radius: 0.3rem;
   border-radius: 0.8rem;
@@ -84,7 +84,7 @@ body {
 .calculator .arithmetic {
   word-wrap: break-word;
   color: #818181;
-  font-size: 1.125rem;
+  font-size: 0.95rem;
   font-weight: 400;
 }
 
@@ -92,7 +92,7 @@ body {
 .calculator .result {
   min-height: 35.9px;
   font-weight: 500;
-  color: white
+  color: white;
 }
 
 .calculator .divide,
