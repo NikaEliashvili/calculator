@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+body {
+  margin: 0;
+}
+
+.calculator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  width: fit-content;
+  height: fit-content;
+  background-color: #130017;
+  border-radius: 2rem;
+  padding: 2rem;
+  display: grid;
+  grid-template-areas:
+    "head      head       head    head"
+    "ac        ac         del     del  "
+    "parenthL  parenthR   divide  mult"
+    "seven     eight      nine    minus"
+    "four      five       six     plus"
+    "one       two        three   equal"
+    "null      null       comma   equal";
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr / repeat(auto, 1fr);
+  gap: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border: 1px solid #79218a;
+}
+
+.calculator>div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #29A8FF;
+  background-color: #363035;
+  padding: 0.3rem 1rem;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: 0.3s;
+  user-select: none;
+}
+
+.calculator>div:active,
+.calculator>div:hover {
+  filter: brightness(2);
+}
+
+.calculator .calc-head {
+  min-height: 65px;
+  height: auto;
+  grid-area: head;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: end;
+  border-radius: 0.3rem;
+  border-radius: 0.8rem;
+  background-color: #27032e;
+  max-width: 211px;
+  user-select: text;
+  cursor: default;
+  /* word-wrap: break-word; */
+}
+
+.calculator .calc-head:hover {
+  filter: none;
+
+}
+
+.calculator .calc-head div {
+  text-align: right;
+  max-width: 211px;
+  margin-left: auto;
+  cursor: text;
+}
+
+.calculator .arithmetic {
+  word-wrap: break-word;
+  color: #818181;
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+
+.calculator .result {
+  min-height: 35.9px;
+  font-weight: 500;
+  color: white
+}
+
+.calculator .divide,
+.calculator .mult,
+.calculator .minus,
+.calculator .plus,
+.calculator .equal {
+  font-family: 'Varela Round', sans-serif;
+  background-color: #64065A;
+  color: white;
+}
+
+
+.calculator .clear {
+
+  grid-area: ac;
+}
+
+.calculator .delete {
+
+  grid-area: del;
+}
+
+.calculator .parentheses-left {
+  grid-area: parenthL;
+}
+
+.calculator .parentheses-right {
+  grid-area: parenthR;
+}
+
+
+.calculator .divide {
+  grid-area: divide;
+}
+
+.calculator .mult {
+  grid-area: mult;
+}
+
+.calculator .minus {
+  grid-area: minus;
+}
+
+.calculator .plus {
+  grid-area: plus;
+}
+
+.calculator .equal {
+  grid-area: equal;
+}
+
+.calculator .comma {
+  grid-area: comma;
+}
+
+.calculator .nine {
+  grid-area: nine;
+}
+
+.calculator .eight {
+  grid-area: eight;
+}
+
+.calculator .seven {
+  grid-area: seven;
+}
+
+.calculator .six {
+  grid-area: six;
+}
+
+.calculator .five {
+  grid-area: five;
+}
+
+.calculator .four {
+  grid-area: four;
+}
+
+.calculator .three {
+  grid-area: three;
+}
+
+.calculator .two {
+  grid-area: two;
+}
+
+.calculator .one {
+  grid-area: one;
+}
+
+.calculator .zero {
+  grid-area: null;
+}
